@@ -1,0 +1,61 @@
+#include<iostream>
+#include<cstring>
+#include<cstdio>
+using namespace std;
+int main()
+{
+	char a[1100],b[1000],c[1000];
+	gets(a);
+	gets(b);
+	gets(c);
+	if(strcmp(a,b)>0)
+	{
+		if(strcmp(a,c)>0)
+		{
+			if(strcmp(b,c)>0)
+			{
+				puts(c);
+				puts(b);
+				puts(a);
+			}
+			else
+			{
+				puts(b);
+				puts(c);
+				puts(a);
+			}
+		}
+		else
+		{
+			puts(b);
+			puts(a);
+			puts(c);
+		}
+		
+	}
+	else
+	{
+		if(strcmp(b,c)>0)
+		{
+			if(strcmp(a,c)>0)
+			{
+				puts(c);
+				puts(a);
+				puts(b);
+			}
+			else
+			{
+				puts(a);
+				puts(c);
+				puts(b);
+			}
+		}
+		else
+		{
+			puts(a);
+			puts(b);
+			puts(c);
+		}
+	}
+	return 0;
+}
