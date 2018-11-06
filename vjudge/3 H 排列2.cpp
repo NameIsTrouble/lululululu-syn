@@ -16,8 +16,7 @@ int main()
         count = i + 1;
         l = count;
     }
-    for (int q = 0; q < count; q++) /*
-    while (cin >> a[0] >> a[1] >> a[2] >> a[3] && (a[1] + a[0] + a[2] + a[3]) != 0)*/
+    for (int q = 0; q < count; q++) 
     {
         a[0] = ca[q][0];
         a[1] = ca[q][1];
@@ -67,17 +66,13 @@ int main()
         int first = ppt[0];
         for (int i = 0; i < w; i++)
         {
-            /*flag[prf[i]] += 1;
-            if (flag[prf[i]] == 1)
-            {*/
                 printf("%d", ppt[i]);
                 first = ppt[i];
             
-            if ((first / 1000) != (ppt[i + 1] / 1000)/*&&(first / 1000) != (prf[i + 2] / 1000)*/)
+            if ((first / 1000) != (ppt[i + 1] / 1000))
             {
                 printf("\n");
             }
-            //if (flag[prf[i]] == 1 && (first / 1000) == (prf[i + 1] / 1000)&&(first / 1000) == (prf[i + 2] / 1000))
             else
                 printf(" ");
         }
@@ -89,3 +84,4 @@ int main()
     system("pause");
     return 0;
 }
+//此题可用next_permutation()函数
