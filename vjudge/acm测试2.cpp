@@ -26,11 +26,6 @@ int main()
 	return 0;
 }*/
 
-
-
-
-
-
 //2  ac c
 /*#include <iostream>
 #include<string>
@@ -95,7 +90,6 @@ int main()
 	return 0;
 }*/
 
-
 //3  ac
 /*#include <iostream>
 using namespace std;
@@ -123,11 +117,6 @@ int main()
 	//system("pause");
 	return 0;
 }*/
-
-
-
-
-
 
 //4  ac  c
 /*#include <iostream>
@@ -157,54 +146,46 @@ int main()
 	return 0;
 }*/
 
-
-
-
-
-//5  wa
+//5  ac
 /*#include<iostream>
 #include<cstring>
 using namespace std;
 int main()
 {
 	long long int n;
-	long long int a[10010];
-	int last=0,l=0,max=0,flag=1,flag2=0;
+	long long int a[100100];
+	int last=0,l=1,max=0,flag=1,flag2=0;
 	cin>>n;
 	for(int i=0;i<n;i++)
 	{
 		cin>>a[i];
-		if(last<=a[i])
+	}
+	for(int i=1;i<n;i++)
+	{
+		if(a[i]>=a[i-1])
 		{
-			last=a[i];
 			l++;
-			if(max<l||flag==1)
-			{
-				max=l;
-				flag=1;
-				if(i!=0)
-				{
-					flag2=1;
-				}
-			}
+			
 		}
 		else
 		{
+			if(max<l)
+			{
+				max=l;
+			}
 			l=1;
-			flag=0;
 		}
 	}
-	if(flag2==1)
+	if(l>max)
+	{
+		max=l;
+	}
 	cout<<max<<endl;
-	else
-	cout<<0<<endl;
 	//system("pause");
 	return 0;
 }*/
 
-
-
-//6   timeex
+//6   ac
 /*#include <iostream>
 #include <string>
 using namespace std;
@@ -218,16 +199,16 @@ int main()
 	}
 	else
 	{
-		//long long int c = b - a;
+		long long int c = b - a;
+		if(c>=10)
+		{
+			printf("0\n");
+			return 0;
+		}
 		for (long long i = a + 1; i <= b; i++)
 		{
 
 			s = i;
-			if ((s / 10) == 0 && s >= 10)
-			{
-				sum = 0;
-				break;
-			}
 			s %= 10;
 			sum *= s;
 			sum %= 10;
