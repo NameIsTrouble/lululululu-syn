@@ -1,69 +1,70 @@
-#include<iostream>
-#include<algorithm>
-#include<cstring>
+#include <iostream>
+#include <algorithm>
+#include <cstring>
 using namespace std;
 struct student
 {
-    string id;
+    char id[22];
     int num;
     int score;
-    int sum=0;
-}stu[2000];
-struct cc
+    int flag = 0;
+    int sum = 0;
+} stu[2000];
+bool cmp(student a, student b)
 {
-    string pid;
-    int psum;
-}ss[2000];
-bool cmp(cc a,cc b)
-{
-    if(a.psum==b.psum)
+    if (a.sum == b.sum)
     {
-        return a.pid<b.pid;
+        return a.id < b.id;
     }
     else
     {
-        return a.psum<b.psum;
+        return a.sum > b.sum;
     }
 }
 int main()
 {
-    int n,m,g;
-    while(scanf("%d",&n))
+    int n, m, g;
+    while (scanf("%d", &n))
     {
-        int score[11]={0};
-        if(n==0)
+        int score[11] = {0};
+        if (n == 0)
         {
             break;
         }
         else
         {
-            scanf("%d%d",&m,&g);
-            int count=0,num=0;
-            for(int i=1;i<=m;i++)
+            scanf("%d %d", &m, &g);
+            int count = 0, num = 0;
+            for (int i = 1; i <= m; i++)
             {
-                scanf("%d",&score[i]);
+                scanf("%d", &score[i]);
             }
-            for(int i=0;i<n;i++)
+            for (int i = 0; i < n; i++)
             {
-                scanf("%s%d",&stu[i].id,&stu[i].num);
-                for(int j=0;j<stu[i].num;j++)
+                stu[i].flag=0;
+                stu[i].sum=0;
+                scanf("%s %d", &stu[i].id, &stu[i].num);
+                for (int j = 0; j < stu[i].num; j++)
                 {
-                    scanf("%d",&stu[i].score);
-                    stu[i].sum+=score[stu[i].score];
-                  //printf("%d\n",stu[i].sum);
+                    int nn;
+                    scanf("%d", &nn);
+                    stu[i].sum += score[nn];
+                    //printf("%d\n",stu[i].sum);
                 }
-                if(stu[i].sum>=g)
+                if (stu[i].sum >= g)
                 {
-                    ss[count].pid=stu[i].id;
-                    ss[count].psum=stu[i].sum; 
+                    //ss[count].pid=stu[i].id;
+                    stu[i].flag = 1;
+                    //ss[count].psum=stu[i].sum;
                     count++;
                 }
             }
-            sort(ss,ss+count,cmp);
-            printf("%d\n",count);
-            for(int i=0;i<count;i++)
+            sort(stu, stu + n, cmp);
+            printf("%d\n", count);
+            for (int i = 0; i < n; i++)
             {
-                printf("%s %d\n",ss[i].pid,ss[i].psum);
+                if (stu[i].flag == 1)
+                    printf("%s %d\n", stu[i].id, stu[i].sum);
             }
         }
     }
