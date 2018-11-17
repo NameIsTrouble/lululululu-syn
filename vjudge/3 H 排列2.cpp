@@ -16,7 +16,7 @@ int main()
         count = i + 1;
         l = count;
     }
-    for (int q = 0; q < count; q++) 
+    for (int q = 0; q < count; q++)
     {
         a[0] = ca[q][0];
         a[1] = ca[q][1];
@@ -25,6 +25,10 @@ int main()
         int prf[25], c = 0;
         int flag[10010] = {0};
         bool ff = 0;
+        /*
+            当我写这段代码时 只有我和上帝知道它是什么意思
+            现在 只有上帝知道了
+        */
         for (int i = 3; i >= 0; i--)
         {
             for (int j = 3; j >= 0; j--)
@@ -52,13 +56,13 @@ int main()
             }
         }
         sort(prf, prf + c);
-        int w=0,ppt[25];
-        for(int i=0;i<c;i++)
+        int w = 0, ppt[25];
+        for (int i = 0; i < c; i++)
         {
-            flag[prf[i]]+=1;
-            if(flag[prf[i]]==1)
+            flag[prf[i]] += 1;
+            if (flag[prf[i]] == 1)
             {
-                ppt[w]=prf[i];
+                ppt[w] = prf[i];
                 w++;
             }
         }
@@ -66,9 +70,9 @@ int main()
         int first = ppt[0];
         for (int i = 0; i < w; i++)
         {
-                printf("%d", ppt[i]);
-                first = ppt[i];
-            
+            printf("%d", ppt[i]);
+            first = ppt[i];
+
             if ((first / 1000) != (ppt[i + 1] / 1000))
             {
                 printf("\n");

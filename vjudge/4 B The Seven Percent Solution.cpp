@@ -1,3 +1,6 @@
+/*
+    简单的字符替换
+*/
 #include <iostream>
 #include <cstring>
 using namespace std;
