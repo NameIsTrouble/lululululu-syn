@@ -1,52 +1,50 @@
-#include<iostream>
-#include<algorithm>
-bool cmp(char a[],char b[])
-{
-    return a<b;
-}
+/*
+    其实这题挺水的
+    但奈何脑子进水
+    程序一直出错
+*/
+#include <iostream>
+#include <algorithm>
+#include <cstdio>
+#include <cstring>
 using namespace std;
 int main()
 {
-    string test;
-    char prf[1000][1000];
-    scanf("%s",&test);
-    int l=test.size(),p=0,countfir=0,countsec=0,first=1,sum=0;
-    for(int i=0;i<l;i++)
+    char test[1010]; //输入字符串
+    int prf[1000];   //输出数字
+    while (scanf("%s", &test) != EOF)
     {
-        if(test[i]=='5')
+        int p = 0; //输出数组的下标
+        //循环读入test
+        for (int i = 0; test[i] != '\0';)
         {
-            countfir++;
-            countsec=0;
-            first=1;
+            if (test[i] == '5') //当test【i】==‘5’时 读下一个字符
+            {
+                i++;
+                continue;
+            }
+            int sum = 0; //记录要输出的数字
+            //计算要输出的数字
+            while (test[i] != '5' && test[i] != '\0')
+            {
+                sum = sum * 10 + test[i] - '0';
+                i++;
+            }
+            prf[p] = sum;
+            p++;
         }
-        else if(first==1&&test[i]=='0')
+        sort(prf, prf + p); //输出数字排序
+        for (int i = 0; i < p; i++)
         {
-            first=0;
-            continue;
+            printf("%d", prf[i]);
+            if (i != p - 1)
+            {
+                printf(" ");
+            }
         }
-        else
-        {
-            prf[countfir][countsec]=test[i];
-        }
+        printf("\n");
     }
-    if(first==1)
-    {
-        sum=countfir+1;
-    }
-    else
-    {
-        sum=countfir;
-    }
-    sort(prf,prf+sum,cmp);
-    for(int i=0;i<sum;i++)
-    {
-        printf("%s",prf[i]);
-        if(i==sum-1)
-        {
-            printf(" ");
-        }
-    }
-    printf("\n");
+
     system("pause");
     return 0;
 }
