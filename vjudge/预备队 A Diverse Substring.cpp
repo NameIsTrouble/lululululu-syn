@@ -19,7 +19,7 @@ int main()
     scanf("%d", &n);
     string test;
     cin >> test;
-    for (int j = 3; j < n; j++)
+    for (int j = 2; j < n; j++)
     {
 
         for (int i = 0; i < n - j - 1; i++)
