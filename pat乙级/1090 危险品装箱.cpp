@@ -1,3 +1,4 @@
+//WA
 #include<iostream>
 using namespace std;
 int main()
@@ -10,7 +11,7 @@ int main()
 	{
 		cin>>Unfixed[i][0]>>Unfixed[i][1];
 	}
-	for(int i=0;i<m;i++)//第几单 
+	for(int i=0;i<m;i++)//锟节硷拷锟斤拷 
 	{
 		cin>>k;
 		for(int j=0;j<k;j++)

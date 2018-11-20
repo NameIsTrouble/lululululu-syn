@@ -1,3 +1,4 @@
+//WA
 #include<iostream>
 #include<cstring>
 using namespace std;
@@ -19,4 +20,4 @@ int main()
 	}
 	return 0;
 }
-//Í¬Î»Ïà¼Ó 
+//Í¬Î»ï¿½ï¿½ï¿½ 

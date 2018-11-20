@@ -1,3 +1,4 @@
+//WA
 #include<iostream>
 #include<cstring>
 #include<stdlib.h>
