@@ -1,4 +1,41 @@
-/*#include <iostream>
+//位运算
+#include <iostream>
+using namespace std;
+int main()
+{
+    int n;
+    while (scanf("%d", &n) && n)
+    {
+        int ans = 0, prf;
+        for (int i = 0; i < n; i++)
+        {
+            scanf("%d", &prf);
+            ans ^= prf; //异或运算
+        }
+        printf("%d\n", ans);
+    }
+    system("pause");
+    return 0;
+}
+/*
+    异或运算
+    0异或任何数都等于任何数     0^a=a
+    1异或任何数都等于任何数取反   1^a=~a      
+    任何数异或两次相同的其他的数都等于这个数本身 a=a^b^b=a
+    任何数异或自己 把自身置0  a^a=0
+    
+    那么上面的ans^=prf就可以这样解释
+        ans=0
+        当输入任意偶数个数a时 ans依然为ans
+        当输入任意奇数个数b时 可看作ans^b=b
+        最终可得ans为出现次数为奇数个的那个数字
+*/
+
+
+
+
+/* 原代码 菜的真实
+#include <iostream>
 #include <cstring>
 #include <vector>
 using namespace std;
@@ -50,22 +87,3 @@ int main()
     system("pause");
     return 0;
 }*/
-//位运算
-#include<iostream>
-using namespace std;
-int main()
-{
-    int n;
-    while(scanf("%d",&n)&&n)
-    {
-        int ans=0,prf;
-        for(int i=0;i<n;i++)
-        {
-            scanf("%d",&prf);
-            ans^=prf;
-        }
-        printf("%d\n",ans);
-    }
-    system("pause");
-    return 0;
-}
