@@ -1,41 +1,60 @@
+/*
+    暴力解法一定会tle
+    主要思路就是打表+前缀和
+*/
 #include<iostream>
 using namespace std;
-int f(int n)
+#define MAXN 2000005
+int ForeSum[MAXN][10];//前缀和 ForeSum[n][m]表示从1到n值为m的个数
+int n;
+int f(int n)//计算f（n）
 {
-    int s=n;
-    while(s >= 10)
-    {
-        int sum = 0;
+        int ans = 1, flag;
         while(n)
         {
-            sum += n % 10;
-            n / 10;
+            flag = n % 10;
+
+            if(flag)//跳过0
+            {
+                ans *= flag;
+            }
+
+            n /= 10;
         }
-        s=sum;
-        n=sum;
+        return ans;
+}
+void create()// 打表
+{   
+    for(int i=1;i<=MAXN;i++)
+    {
+        int x=f(i);
+        while(x>=10)//得到最终值
+        {
+            x=f(x);
+        }
+        ForeSum[i][x]++;//记录f（i）的值
     }
-    return s;
 }
 int main()
 {
-    int q;
-    cin >> q;
-
-    while(q--)
+    create();//打表
+    for(int i=1;i<10;i++)
     {
-        int l, r, k, count = 0;
-        cin >> l >> r >> k;
-
-        for(int i = l; i <= r; i++)
+        for(int j=2;j<=MAXN;j++)
         {
-            if(f(i) == k||i==k)
-            {
-                count++;
-            }
+            ForeSum[j][i]+=ForeSum[j-1][i];//累加得到前缀和
         }
-
-        cout << count << endl;
     }
+    int l, r, k;
+    cin >> n;
+
+    while(n--)
+    {
+        cin >> l >> r >> k;
+        int count = ForeSum[r][k]-ForeSum[l-1][k];//得到从l到r值为k的个数
+        printf("%d\n", count);
+    }
+
     system("pause");
     return 0;
 }

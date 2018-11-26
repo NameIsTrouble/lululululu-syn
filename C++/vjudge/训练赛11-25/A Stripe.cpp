@@ -1,6 +1,7 @@
 /*
     tle十好几次
     不想说啥
+    记得开全局数组变量
 */
 #include<bits/stdc++.h>
 using namespace std;
