@@ -26,8 +26,10 @@ int main()
         int flag[10010] = {0};
         bool ff = 0;
         /*
-            当我写这段代码时 只有我和上帝知道它是什么意思
-            现在 只有上帝知道了
+            When I wrote down this piece of codes,
+            only God and I could understand what is the meanning,
+            and now,
+            God is the only one.
         */
         for (int i = 3; i >= 0; i--)
         {
