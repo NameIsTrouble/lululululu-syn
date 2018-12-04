@@ -1,3 +1,8 @@
+/*
+    水题
+    想一下就知道如果配方符合要求
+    那成品一定就是最佳配方
+*/
 #include<iostream>
 using namespace std;
 int main()
@@ -8,7 +13,6 @@ int main()
     {
         int n;
         string a,b;
-        char prf[100010];
         cin>>n;
         cin>>a>>b;
         int count=0,flag=1;
