@@ -4,7 +4,12 @@ int main()
 {
     int n;
     cin >> n;
-    vector<vector<int>> blocks(n);
+     vector<string>blo;
+     for(int i=0;i<n;i++)
+     {
+         blo[i].push_back(i+'0');
+     }
+    //vector<vector<int>> blocks(n);
     for(int i=0;i<n;i++)
     {
         blocks[i].push_back(i);
