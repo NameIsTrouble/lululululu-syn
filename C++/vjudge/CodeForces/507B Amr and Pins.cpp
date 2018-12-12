@@ -1,24 +1,3 @@
-#ACM集训队选拔3
-## A
->
-```C++
-```
-## B
->
-```C++
-```
-## C
->
-```C++
-```
-## D
->
-```C++
-```
-## E
-- AC
->
-```c++
 #include <bits/stdc++.h>
 using namespace std;
 int main()
@@ -54,8 +33,3 @@ int main()
 	//system("pause");
 	return 0;
 }
-```
-## F
->
-```C++
-```
