@@ -1,53 +1,59 @@
-//WA
+//WA tle
 #include <iostream>
+#include <string.h>
 #include <algorithm>
+
 using namespace std;
+
+int temp[100005];
+bool judge[100005];
+int ans[100005];
+
+bool cmp(int a,int b)
+{
+    return a < b;
+}
+
 int main()
 {
-    int n;
-    scanf("%d", &n);
-    int test[100010], flag[100010] = {0}, prf[100010], count = 0;
-    for (int i = 0; i < n; i++)
+    memset(judge, true, sizeof(judge));
+    int N, num = 0;
+    cin >> N;
+    for (int i = 0; i < N; i++)
     {
-        scanf("%d", &test[i]);
+        cin >> temp[i];
     }
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < N; i++)
     {
         for (int j = 0; j < i; j++)
         {
-            if (test[i] < test[j])
+            if (temp[i] < temp[j])
             {
-                flag[i] = 1;
+                judge[i] = false;
                 break;
             }
         }
-        for (int j = i + 1; j < n && flag[i] != 1; j++)
+        for (int j = i + 1; j < N && judge[i]; j++)
         {
-            if (test[i] > test[j])
+            if (temp[j] < temp[i])
             {
-                flag[i] = 1;
+                judge[i] = false;
                 break;
             }
         }
-        if (flag[i] == 0)
+        if(judge[i])
         {
-            prf[count] = test[i];
-            count++;
+            ans[num] = temp[i];
+            num++;
         }
     }
-    sort(prf, prf + count);
-    printf("%d\n", count);
-    for (int i = 0; i < count; i++)
+    sort(ans, ans + num, cmp);
+    cout << num << endl;
+    for(int i = 0; i < num - 1; i++)
     {
-        if (i == count - 1)
-        {
-            printf("%d\n", prf[i]);
-        }
-        else
-        {
-            printf("%d ", prf[i]);
-        }
+        cout << ans[i]<<" ";
     }
+    cout << ans[num - 1] << endl;
     system("pause");
     return 0;
 }
