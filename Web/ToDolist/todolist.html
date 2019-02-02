@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<head>
+    <style type="text/css">
+        @import"todolist.css";
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="top">
+            <p class="title">ToDolist</p>
+            <div class="sub">
+                <input class="intext" type="text" placeholder="输入待办事项" id="intext" >
+                <button class="adbtn" type="button" onclick="add()">+添加</button>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="list">
+                <uav>
+                    <ul id="list">
+                        <li onclick="fin(this)">
+                            待办事项1
+                            <button class="del" onclick="del(this)"><img class="im" src="trash-2.png"></button>
+                        </li>
+                        <li onclick="fin(this)">
+                            待办事项2
+                            <button class="del" onclick="del(this)"><img class="im" src="trash-2.png"></button>
+                        </li>
+                        <li onclick="fin(this)">
+                            待办事项3
+                            <button class="del" onclick="del(this)"><img class="im" src="trash-2.png"></button>
+                        </li>
+                        <li onclick="fin(this)">
+                            待办事项4
+                            <button class="del" onclick="del(this)"><img class="im" src="trash-2.png"></button>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+    <script src="todolist.js"></script>
+</body>
