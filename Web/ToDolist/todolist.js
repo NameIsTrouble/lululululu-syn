@@ -8,7 +8,7 @@ function add() {
     var temp = document.getElementById("intext").value;
     if (temp === '') {
         alert("请输入待办事项");
-    } else { 
+    } else {
         var newev = document.createTextNode(temp);
         var newpic = document.createElement("img");
         newpic.className = "im";
@@ -36,10 +36,10 @@ document.onkeypress = function (event) {
     }
 }
 
-function fin(temp){
-    if(temp.className==="fin"){
-        temp.className="";
-    }else{
-        temp.className="fin";
+function fin(temp) {
+    if (temp.className === "fin") {
+        temp.className = "";
+    } else {
+        temp.className = "fin";
     }
 }
