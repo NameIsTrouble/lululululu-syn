@@ -1,0 +1,44 @@
+.tt ul li{
+    border: 0px;
+    padding: 0px;
+}
+
+li{
+    list-style: none;
+    font-size: 13px;
+}
+
+.tt{
+    border: 0;
+    padding: 0;
+}
+
+.clearfix:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+ul{
+    border: 0px;
+    padding: 0px;
+    margin: 0;
+}
+
+.function{
+    float: left;
+}
+
+.user-inf{
+    float: right;
+}
+
+.function>li{
+    float:left;
+    margin: 0 10px;
+}
+
+.user-inf>li{
+    float: left;
+    margin: 0 10px;
+}

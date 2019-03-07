@@ -1,72 +1,60 @@
-//WA
-#include<iostream>
+#include <iostream>
+#include <vector>
+#include <string.h>
+
 using namespace std;
+
+string Incompicable[10005][2];
+string list[1005];
+
 int main()
 {
-	int n,m,k;
-	int Unfixed[10005][2],Num[105][10000];
-	bool Judge[10000];
-	cin>>n>>m;
-	for(int i=0;i<n;i++)
+	int k, N, M;
+	cin >> N >> M;
+
+	for (int i = 0; i < N; i++)
 	{
-		cin>>Unfixed[i][0]>>Unfixed[i][1];
+		cin >> Incompicable[i][0] >> Incompicable[i][1];
 	}
-	for(int i=0;i<m;i++)//�ڼ��� 
+
+	while (M--)
 	{
-		cin>>k;
-		for(int j=0;j<k;j++)
+		bool judge = false;
+		memset(list, '\0', sizeof(list));
+		cin >> k;
+
+		for (int i = 0; i < k; i++)
 		{
-			cin>>Num[i][j];
+			cin >> list[i];
 		}
-		for(int j=0;j<k;j++)
+
+		for (int i = 0; i < N && !judge; i++)
 		{
-			for(int v=0;v<n;v++)
+			for (int j = 0; j < k && !judge; j++)
 			{
-				if(Num[i][j]==Unfixed[v][0])
+				if (list[j] == Incompicable[i][0])
 				{
-					for(int z=0;z<k;z++)
+					for (int z = 0; z < k && !judge; z++)
 					{
-						if(Num[i][z]==Unfixed[v][1])
+						if (list[z] == Incompicable[i][1])
 						{
-							Judge[i]=false;
-							break;
-						}
-						else
-						{
-							Judge[i]=true;
+							judge = true;
 						}
 					}
-					break;
 				}
-				else if(Num[i][j]==Unfixed[v][1])
-				{
-					for(int z=0;z<k;z++)
-					{
-						if(Num[i][z]==Unfixed[v][0])
-						{
-							Judge[i]=false;
-							break;
-						}
-						else
-						{
-							Judge[i]=true;
-						}
-					}
-					break;
-				} 
 			}
 		}
-	}
-	for(int i=0;i<m;i++)
-	{
-		if(Judge[i]==true)
+
+		if (judge)
 		{
-			cout<<"Yes"<<endl;
+			cout << "No\n";
 		}
 		else
 		{
-			cout<<"No"<<endl;
+			cout << "Yes\n";
 		}
 	}
+
+	system("pause");
 	return 0;
 }
