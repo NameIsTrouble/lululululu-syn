@@ -1,46 +1,48 @@
 #include <iostream>
+#include <map>
 #include <vector>
 #include <string.h>
 
 using namespace std;
 
-string Incompicable[10005][2];
-string list[1005];
+bool vis[10000005];//判断货物是否出现
+map<int, vector<int>> Inc;//记录不相容货物
 
 int main()
 {
-	int k, N, M;
+	int N, M;
 	cin >> N >> M;
 
 	for (int i = 0; i < N; i++)
 	{
-		cin >> Incompicable[i][0] >> Incompicable[i][1];
+		int a, b;
+		cin >> a >> b;
+		Inc[a].push_back(b);//记录与a不相容的货物
+		Inc[b].push_back(a);//记录与b不相容的货物
 	}
 
 	while (M--)
 	{
-		bool judge = false;
-		memset(list, '\0', sizeof(list));
+		memset(vis, false, sizeof(vis));//初始化为false
+		int k;
+		bool judge = false;//判断是否能相容
 		cin >> k;
+		vector<int> temp(k);//要装箱的货物
 
 		for (int i = 0; i < k; i++)
 		{
-			cin >> list[i];
+			cin >> temp[i];
+			vis[temp[i]] = true;//货物存在
 		}
 
-		for (int i = 0; i < N && !judge; i++)
+		for (int i = 0; i < temp.size(); i++)
 		{
-			for (int j = 0; j < k && !judge; j++)
+			/*遍历寻找不相容货物*/
+			for (int j = 0; j < Inc[temp[i]].size(); j++)
 			{
-				if (list[j] == Incompicable[i][0])
+				if (vis[Inc[temp[i]][j]])
 				{
-					for (int z = 0; z < k && !judge; z++)
-					{
-						if (list[z] == Incompicable[i][1])
-						{
-							judge = true;
-						}
-					}
+					judge = true;
 				}
 			}
 		}
