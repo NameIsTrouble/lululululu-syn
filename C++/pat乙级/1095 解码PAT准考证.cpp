@@ -9,59 +9,7 @@ struct node
 {
     string ID;
     int score;
-    char rank;
-    int room;
-    int date;
-} Inf[100005];
-
-struct dat
-{
-    int r;
-    int n;
 };
-
-void fun1(int a, char b);
-void fun2(int a, char b);
-void fun3(int a, char b);
-bool cmpins(const node &a, const node &b);
-bool cmpind(const dat &a, const dat &b);
-
-int N, M;
-
-int main()
-{
-    cin >> N >> M;
-
-    for (int i = 0; i < N; i++)
-    {
-        cin >> Inf[i].ID >> Inf[i].score;
-        Inf[i].room = (Inf[i].ID[1] - '0') * 100 + (Inf[i].ID[2] - '0') * 10 + Inf[i].ID[3] - '0';
-        Inf[i].date = (Inf[i].ID[4] - '0') * 100000 + (Inf[i].ID[5] - '0') * 10000 + (Inf[i].ID[6] - '0') * 1000 + (Inf[i].ID[7] - '0') * 100 + (Inf[i].ID[8] - '0') * 10 + Inf[i].ID[9] - '0';
-        Inf[i].rank = Inf[i].ID[0];
-    }
-
-    for (int i = 1; i <= M; i++)
-    {
-        char fun;
-        cin >> fun;
-
-        switch (fun)
-        {
-        case '1':
-            fun1(i, fun);
-            break;
-        case '2':
-            fun2(i, fun);
-            break;
-        case '3':
-            fun3(i, fun);
-            break;
-        }
-    }
-
-    system("pause");
-    return 0;
-}
 
 bool cmpins(const node &a, const node &b)
 {
@@ -75,113 +23,107 @@ bool cmpins(const node &a, const node &b)
     }
 }
 
-bool cmpind(const dat &a, const dat &b)
-{
-    if (a.n == b.n)
-    {
-        return a.r < b.r;
-    }
-    else
-    {
-        return a.n > b.n;
-    }
-}
+int N, M;
+vector<node> Inf;
 
-void fun1(int i, char fun)
+int main()
 {
-    bool judge = false;
-    char ch;
-    cin >> ch;
-    printf("Case %d: %c %c\n", i, fun, ch);
-    sort(Inf, Inf + N, cmpins);
+    cin >> N >> M;
 
     for (int i = 0; i < N; i++)
     {
-        if (Inf[i].rank == ch)
+        node t;
+        cin >> t.ID >> t.score;
+        Inf.push_back(t);
+    }
+
+    for (int j = 1; j <= M; j++)
+    {
+        bool judge = false;
+        string Op;
+        char fun;
+        cin >> fun >> Op;
+
+        cout << "Case " << j << ": " << fun << " " << Op << endl;
+
+        vector<node> ans;
+
+        switch (fun)
         {
-            judge = true;
-            cout << Inf[i].ID << " " << Inf[i].score << endl;
-        }
-    }
-
-    if (!judge)
-    {
-        cout << "NA\n";
-    }
-}
-
-void fun2(int i, char fun)
-{
-    bool judge = false;
-    int num, n = 0, s = 0;
-    cin >> num;
-    printf("Case %d: %c %d\n", i, fun, num);
-
-    for (int i = 0; i < N; i++)
-    {
-        if (Inf[i].room == num)
+        case '1':
         {
-            judge = true;
-            n++;
-            s += Inf[i].score;
-        }
-    }
-    if (judge)
-    {
-        cout << n << ' ' << s << endl;
-    }
-    else
-    {
-        cout << "NA\n";
-    }
-}
-
-void fun3(int i, char fun)
-{
-    bool judge = false;
-    int da;
-    cin >> da;
-    printf("Case %d: %c %d\n", i, fun, da);
-    vector<dat> ans;
-    unordered_map<int, int> temp;
-
-    for (int i = 0; i < N; i++)
-    {
-        if (Inf[i].date == da)
-        {
-            unordered_map<int, int>::iterator it = temp.find(Inf[i].room);
-            if (it == temp.end())
+            for (int i = 0; i < Inf.size(); i++)
             {
-                temp[Inf[i].room] = 0;
+                if (Inf[i].ID[0] == Op[0])
+                {
+                    ans.push_back(Inf[i]);
+                }
+            }
+            break;
+        }
+        case '2':
+        {
+            bool judge = false;
+            int n = 0, s = 0;
+
+            for (int i = 0; i < Inf.size(); i++)
+            {
+                if (Inf[i].room == Op)
+                {
+                    judge = true;
+                    n++;
+                    s += Inf[i].score;
+                }
+            }
+            if (judge)
+            {
+                cout << n << ' ' << s << endl;
             }
             else
             {
-                temp[Inf[i].room]++;
+                cout << "NA\n";
             }
+            break;
         }
-    }
-
-    for (unordered_map<int, int>::iterator i = temp.begin(); i != temp.end(); i++)
-    {
-        dat t;
-        t.n = i->second;
-        t.r = i->first;
-        ans.push_back(t);
-    }
-
-    sort(ans.begin(), ans.end(), cmpind);
-
-    for (int i = 0; i < ans.size(); i++)
-    {
-        if (ans[i].n)
+        case '3':
         {
-            judge = true;
-            cout << ans[i].r << " " << ans[i].n << endl;
+            bool judge = false;
+            vector<dat> ans;
+            unordered_map<string, int> temp;
+
+            for (int i = 0; i < Inf.size(); i++)
+            {
+                if (Inf[i].date == Op)
+                {
+                    temp[Inf[i].room]++;
+                }
+            }
+
+            for (auto it : temp)
+            {
+                ans.push_back({it.first, it.second});
+            }
+
+            sort(ans.begin(), ans.end(), cmpind);
+
+            for (int i = 0; i < ans.size(); i++)
+            {
+                if (ans[i].n)
+                {
+                    judge = true;
+                    cout << ans[i].r << " " << ans[i].n << endl;
+                }
+            }
+
+            if (!judge)
+            {
+                cout << "NA\n";
+            }
+            break;
+        }
         }
     }
 
-    if (!judge)
-    {
-        cout << "NA\n";
-    }
+    system("pause");
+    return 0;
 }
