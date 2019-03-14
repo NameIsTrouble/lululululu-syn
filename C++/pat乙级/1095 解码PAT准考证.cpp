@@ -42,6 +42,7 @@ int main()
         bool judge = false;
         string Op;
         char fun;
+        int n = 0, s = 0;
         cin >> fun >> Op;
 
         cout << "Case " << j << ": " << fun << " " << Op << endl;
@@ -52,23 +53,21 @@ int main()
         {
         case '1':
         {
-            for (int i = 0; i < Inf.size(); i++)
+            for (int i = 0; i < N; i++)
             {
                 if (Inf[i].ID[0] == Op[0])
                 {
                     ans.push_back(Inf[i]);
                 }
             }
+
             break;
         }
         case '2':
         {
-            bool judge = false;
-            int n = 0, s = 0;
-
             for (int i = 0; i < Inf.size(); i++)
             {
-                if (Inf[i].room == Op)
+                if (Inf[i].ID.substr(1, 3) == Op)
                 {
                     judge = true;
                     n++;
@@ -76,51 +75,42 @@ int main()
                 }
             }
             if (judge)
-            {
-                cout << n << ' ' << s << endl;
-            }
-            else
-            {
-                cout << "NA\n";
-            }
+                cout << n << " " << s << endl;
             break;
         }
         case '3':
         {
-            bool judge = false;
-            vector<dat> ans;
             unordered_map<string, int> temp;
 
             for (int i = 0; i < Inf.size(); i++)
             {
-                if (Inf[i].date == Op)
+                if (Inf[i].ID.substr(4, 6) == Op)
                 {
-                    temp[Inf[i].room]++;
+                    temp[Inf[i].ID.substr(1, 3)]++;
                 }
             }
 
-            for (auto it : temp)
+            for (unordered_map<string, int>::iterator it = temp.begin(); it != temp.end(); it++)
             {
-                ans.push_back({it.first, it.second});
+                ans.push_back({it->first, it->second});
             }
 
-            sort(ans.begin(), ans.end(), cmpind);
-
-            for (int i = 0; i < ans.size(); i++)
-            {
-                if (ans[i].n)
-                {
-                    judge = true;
-                    cout << ans[i].r << " " << ans[i].n << endl;
-                }
-            }
-
-            if (!judge)
-            {
-                cout << "NA\n";
-            }
             break;
         }
+        }
+        sort(ans.begin(), ans.end(), cmpins);
+
+        for (int i = 0; i < ans.size(); i++)
+        {
+            if (ans[i].score)
+            {
+                judge = true;
+                cout << ans[i].ID << " " << ans[i].score << endl;
+            }
+        }
+        if (!judge)
+        {
+            cout << "NA\n";
         }
     }
 
