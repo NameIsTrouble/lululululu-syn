@@ -60,7 +60,7 @@ int main()
 		{
 			bool judge;
 			int x;
-			if (sub_in_P)																					//当P前有A时
+			if (sub_in_P)//当P前有A时
 				if (sub_in_P == temp.size() - sub_in_T - 1 || (temp.size() - sub_in_T - 1) % sub_in_P == 0) //T后的A的数量必须等于或能够乘除P前A的数量
 				{
 					judge = true;
