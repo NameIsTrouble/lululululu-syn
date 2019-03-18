@@ -20,7 +20,7 @@ int main()
 
         for (int i = 1; i < a.size(); ++i)
         {
-            if (a[i] == 'E')//标记E的下标
+            if (a[i] == 'E') //标记E的下标
             {
                 sub_index = i;
                 break;
@@ -30,7 +30,7 @@ int main()
         long long temp = 0;
 
         for (int i = sub_index + 2; i < a.size(); ++i)
-            temp = temp * 10 + a[i] - '0';//记录E后的数据
+            temp = temp * 10 + a[i] - '0'; //记录E后的数据
 
         //当E后为-时直接将小数点提前 即添加前导0即可
         if (a[sub_index + 1] == '-')
