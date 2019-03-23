@@ -1,3 +1,6 @@
+/*
+    注意输出0的情况
+*/
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -13,14 +16,12 @@ int main()
 
     cin >> standard >> a >> b;
 
-    int s = a.size() > b.size() ? a.size() : b.size();
+    int s = standard.size();
 
     reverse(a.begin(), a.end());
     reverse(b.begin(), b.end());
     reverse(standard.begin(), standard.end());
 
-    if (s > standard.size())
-        standard.append(s - standard.size(), '0');
     if (s > a.size())
         a.append(s - a.size(), '0');
     if (s > b.size())
@@ -28,10 +29,11 @@ int main()
 
     int temp = 0;
 
+    /*模拟加法*/
     for (int i = 0; i < s; ++i)
     {
-        temp = (temp + a[i] - '0' + b[i] - '0') / standard[i];
-        ans.push_back((temp + a[i] - '0' + b[i] - '0') / standard[i]);
+        ans.push_back((temp + a[i] - '0' + b[i] - '0') % ((standard[i] - '0') ? standard[i] - '0' : 10));
+        temp = (temp + a[i] - '0' + b[i] - '0') / ((standard[i] - '0') ? standard[i] - '0' : 10);
     }
 
     if (temp)
@@ -39,8 +41,19 @@ int main()
 
     reverse(ans.begin(), ans.end());
 
+    bool flag = false;
+
     for (int i = 0; i < ans.size(); ++i)
-        cout << ans[i];
+    {
+        if (ans[i] || flag)
+        {
+            flag = true;
+            cout << ans[i];
+        }
+    }
+
+    if (!flag)
+        cout << 0;
 
     cout << endl;
 
