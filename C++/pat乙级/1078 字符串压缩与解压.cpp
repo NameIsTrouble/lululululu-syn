@@ -4,25 +4,23 @@ using namespace std;
 
 string title;
 
+// 压缩
 void zip()
 {
     getline(cin, title);
 
     bool flag = false;
-    char x;
+    char x = title[0];
     int num = 0;
 
+    // 循环判断
     for (int i = 0; i < title.size(); ++i)
     {
-        if (!flag)
-        {
-            flag = true;
-            x = title[i];
-        }
+        // 如果读取字符与选择字符相同 num++
         if (title[i] == x)
         {
             num++;
-            continue;
+            flag = true; // 标为true
         }
         else
         {
@@ -30,11 +28,13 @@ void zip()
                 cout << num << x;
             else
                 cout << x;
+            x = title[i];
             num = 1;
             flag = false;
         }
     }
 
+    // 如果结束循环时字符连续
     if (flag)
         if (num > 1)
             cout << num << x;
@@ -46,6 +46,7 @@ void zip()
     cout << endl;
 }
 
+// 解压
 void unzip()
 {
     getline(cin, title);
@@ -54,13 +55,14 @@ void unzip()
     int cnt = 1;
     for (int i = 0; i < title.size(); ++i)
     {
+        // 判断是否是数字
         if (isdigit(title[i]))
         {
-            n.append(1, title[i]);
+            n += title[i];
         }
         else
         {
-            if (title.size())
+            if (n.size())
                 cnt = stoi(n);
 
             while (cnt--)
