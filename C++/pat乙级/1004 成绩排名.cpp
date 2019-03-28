@@ -1,53 +1,32 @@
-/*#include<iostream>
+#include <iostream>
+#include <algorithm>
+
 using namespace std;
+
+struct student
+{
+	string name;
+	string id;
+	int score;
+} stu[10005];
+
+bool cmp(student a, student b)
+{
+	return a.score > b.score;
+}
+
 int main()
 {
-	int max,min,score[1000];
-	string name[1000],num[1000];
 	int n;
-	cin>>n;
-	for(int i=0;i<n;i++)
-	{
-		cin>>name[i]>>num[i]>>score[i]; 
-	}
-	max=0;
-	min=0;
-	for(int i=0;i<n;i++)
-	{
-		for(int j=0;j<n;j++)
-		{
-			if(score[i]<score[j])
-			{
-				max=j;
-			}
-			if(score[i]>score[j])
-			{
-				min=j;
-			}
-		}
-	}
-	cout<<name[max]<<' '<<num[max]<<endl;
-	cout<<name[min]<<' '<<num[min]<<endl;
-	return 0;
-}*/
-#include <cstdio>
-struct student {
-	char name[15];
-	char id[15];
-	int score;
-}stu[10005];
- 
-int main() {
-	int n, max = 0, min = 0;
-	scanf("%d", &n);
-	for(int i = 0; i < n; i++) {
-		scanf("%s", stu[i].name);
-		scanf("%s", stu[i].id);
-		scanf("%d", &stu[i].score);
-		if(stu[i].score > stu[max].score) max = i;
-		if(stu[i].score < stu[min].score) min = i;
-	}
-	printf("%s %s\n", stu[max].name, stu[max].id);
-	printf("%s %s\n", stu[min].name, stu[min].id);
+	cin >> n;
+
+	for (int i = 0; i < n; ++i)
+		cin >> stu[i].name >> stu[i].id >> stu[i].score;
+
+	sort(stu, stu + n, cmp);
+
+	cout << stu[0].name << " " << stu[0].id << endl;
+	cout << stu[n - 1].name << " " << stu[n - 1].id << endl;
+
 	return 0;
 }

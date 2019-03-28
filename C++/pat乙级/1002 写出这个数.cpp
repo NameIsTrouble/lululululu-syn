@@ -1,28 +1,25 @@
-#include<iostream>
-#include<cstring>
-#include<cstdio>
+#include <iostream>
+
 using namespace std;
+
+string num[10] = {"ling", "yi", "er", "san", "si", "wu", "liu", "qi", "ba", "jiu"};
+
 int main()
 {
 	string str;
-	cin>>str;
-	int l=str.size(),sum=0;
-	string num[10]={"ling","yi","er","san","si","wu","liu","qi","ba","jiu"};
-	for(int i=0;i<l;i++)
-	{
-		sum+=str[i]-'0';
-	}
-	char str2[100000];
-	sprintf(str2,"%d",sum);
-	int size=strlen(str2);
-	for(int i=0;i<size;i++)
-	{
-		int n=str2[i]-'0';
-		cout<<num[n];
-		if(i!=size-1)
-		{
-			cout<<' ';
-		}
-	}
+	cin >> str;
+
+	int sum = 0;
+
+	for (int i = 0; i < str.size(); i++)
+		sum += str[i] - '0';
+
+	str = to_string(sum); // 将整形数据转换成字符串
+
+	for (int i = 0; i < str.size(); i++)
+		printf("%s%s", i ? " " : "", num[str[i] - '0'].c_str());
+
+	cout << endl;
+
 	return 0;
- } 
+}
