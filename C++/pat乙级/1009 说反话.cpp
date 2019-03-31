@@ -1,31 +1,23 @@
-#include<iostream>
-#include<cstring>
-#include<stdio.h>
+#include <iostream>
+#include <sstream>
+#include <vector>
+
 using namespace std;
+
+vector<string> ans;
+
 int main()
 {
-	char c[82];
-    gets(c+1);
-    c[0] = ' ';
-    for(int i=strlen(c);i>=0;i--)
-	{
-        if(c[i] == ' ')
-		{
-            cout<<c+i+1;
-            c[i] = '\0';
-            if(i == 0)
-			{
-                cout<<endl;
-            }
-            else
-			{
-                cout<<' ';
-            }
-        }
-        else
-		{
-            continue;
-        }
-    }
-	return 0;
+    string temp, v;
+    getline(cin, v);
+
+    stringstream ss(v);
+
+    while (ss >> temp)
+        ans.push_back(temp);
+
+    for (int i = ans.size() - 1; i >= 0; --i)
+        cout << ans[i] << (i ? ' ' : '\n');
+
+    return 0;
 }

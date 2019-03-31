@@ -1,27 +1,29 @@
-#include<iostream>
+#include <iostream>
+
 using namespace std;
+
+int ans[1000];
+
 int main()
 {
-	int move[1000]={0};
-	int n,m;
-	cin>>n>>m;
-	m%=n;
-	for(int i=0;i<n;i++)
-	{
-		cin>>move[i];
-	}
-	for(int i=m+n-1;i>=m-1;i--)
-	{
-		move[i]=move[i-m];
-	}
-	for(int i=0;i<m;i++)
-	{
-		move[i]=move[i+n];
-	}
-	for(int i=0;i<n-1;i++)
-	{
-		cout<<move[i]<<' ';
-	}
-	cout<<move[n-1];
+
+	int n, m;
+	cin >> n >> m;
+	m %= n;
+
+	for (int i = 0; i < n; i++)
+		cin >> ans[i];
+
+	for (int i = n - m; i < n; ++i)
+		for (int j = i; j > i - n + m; --j)
+		{
+			int temp = ans[j];
+			ans[j] = ans[j - 1];
+			ans[j - 1] = temp;
+		}
+
+	for (int i = 0; i < n; ++i)
+		cout << ans[i] << (i == n - 1 ? '\n' : ' '); 
+
 	return 0;
 }
