@@ -69,7 +69,7 @@ int main()
             {
                 cout << "Gai\n";
             }
-            
+
             judge = true;
             break;
         }

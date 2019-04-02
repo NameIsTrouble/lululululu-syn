@@ -14,21 +14,15 @@ int main()
     cin >> m >> n >> a >> b >> exc;
 
     for (int i = 0; i < m; i++)
-    {
         for (int j = 0; j < n; j++)
         {
             int x;
             cin >> x;
             if (x >= a && x <= b)
-            {
                 artix[i][j] = exc;
-            }
             else
-            {
                 artix[i][j] = x;
-            }
         }
-    }
 
     for (int i = 0; i < m; i++)
     {
@@ -36,9 +30,7 @@ int main()
         {
             cout << setw(3) << setfill('0') << artix[i][j];
             if (j != n - 1)
-            {
                 cout << " ";
-            }
         }
 
         cout << endl;

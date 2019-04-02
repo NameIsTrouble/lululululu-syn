@@ -18,8 +18,7 @@ int main()
     {
         string a;
         cin >> a;
-        if (a[2] == 'T')//判断是否正确
-        {
+        if (a[2] == 'T') //判断是否正确
             switch (a[0])
             {
             case 'A':
@@ -35,16 +34,16 @@ int main()
                 ans.push(4);
                 break;
             }
-        }
     }
 
-    while (!ans.empty())//遍历输出
+    while (!ans.empty()) //遍历输出
     {
         cout << ans.front();
         ans.pop();
     }
 
     cout << endl;
+
     system("pause");
     return 0;
 }

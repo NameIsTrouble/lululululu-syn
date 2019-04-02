@@ -21,9 +21,7 @@ int main()
         int num = 0;
 
         for (int i = 0; i < x.size(); i++)
-        {
             num += x[i] - '0';
-        }
 
         set<int>::iterator it = temp.find(num);
 
@@ -41,13 +39,9 @@ int main()
         sum--;
         cout << *i;
         if (!sum)
-        {
             cout << endl;
-        }
         else
-        {
             cout << " ";
-        }
     }
 
     system("pause");

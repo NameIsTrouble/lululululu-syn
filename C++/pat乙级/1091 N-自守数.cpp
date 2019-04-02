@@ -26,19 +26,15 @@ int main()
         }
 
         for (int i = 1; i < 10; i++)
-        {
             if ((b * b * i) % c == b)
             {
                 cout << i << " " << b * b * i << endl;
                 flag = true;
                 break;
             }
-        }
 
         if (!flag)
-        {
             cout << "No\n";
-        }
     }
 
     system("pause");

@@ -44,13 +44,11 @@ int main()
     bool flag = false;
 
     for (int i = 0; i < ans.size(); ++i)
-    {
         if (ans[i] || flag)
         {
             flag = true;
             cout << ans[i];
         }
-    }
 
     if (!flag)
         cout << 0;

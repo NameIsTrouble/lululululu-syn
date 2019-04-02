@@ -24,19 +24,13 @@ int main()
             cin >> E;
 
             if (E < e)
-            {
                 num++;
-            }
         }
 
         if (2 * num > K && K > D)
-        {
             ecd++;
-        }
         else if (2 * num > K)
-        {
             mecd++;
-        }
     }
 
     printf("%.1lf%% %.1lf%%\n", mecd * 100.0 / N, ecd * 100.0 / N);

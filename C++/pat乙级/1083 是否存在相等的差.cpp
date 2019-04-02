@@ -12,7 +12,7 @@ int main()
 {
     int n;
     cin >> n;
-    
+
     for (int i = 0; i < n; i++)
     {
         int x;
@@ -21,12 +21,8 @@ int main()
     }
 
     for (int i = n - 1; i >= 0; i--)
-    {
         if (ans[i] > 1)
-        {
             cout << i << " " << ans[i] << endl;
-        }
-    }
 
     system("pause");
     return 0;

@@ -1,10 +1,12 @@
 #include <iostream>
+
 using namespace std;
+
 int main()
 {
-    int a, num[7]={0},sum=0;
+    int a, num[7] = {0}, sum = 0;
+
     while ((a = getchar()) != '\n')
-    {
         switch (a)
         {
         case 'P':
@@ -26,7 +28,7 @@ int main()
             num[5]++;
             break;
         }
-    }
+
     while (1)
     {
         if (num[0] != 0)
@@ -59,12 +61,12 @@ int main()
             printf("t");
             num[5]--;
         }
-        if (num[0]+num[1]+num[2]+num[3]+num[4]+num[5] == 0)
-        {
+        if (num[0] + num[1] + num[2] + num[3] + num[4] + num[5] == 0)
             break;
-        }
     }
+
     printf("\n");
+    
     system("pause");
     return 0;
 }

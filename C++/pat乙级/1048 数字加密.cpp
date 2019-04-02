@@ -23,7 +23,6 @@ int main()
         b.append(a.size() - b.size(), '0');
 
     for (int i = 0; i < b.size(); ++i)
-    {
         if (i % 2 == 0)
         {
             int temp = (a[i] + b[i] - 2 * '0') % 13;
@@ -44,14 +43,12 @@ int main()
         }
         else
             c[i] = b[i] - a[i] < 0 ? b[i] - a[i] + 10 + '0' : b[i] - a[i] + '0';
-    }
 
     reverse(c.begin(), c.end());
 
     for (int i = 0; i < c.size(); ++i)
-    {
         cout << c[i];
-    }
+
     cout << endl;
 
     system("pause");

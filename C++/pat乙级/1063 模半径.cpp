@@ -16,9 +16,7 @@ int main()
         int a, b;
         cin >> a >> b;
         if (a * a + b * b > max)
-        {
             max = a * a + b * b;
-        }
     }
 
     printf("%.2lf\n", sqrt(max));

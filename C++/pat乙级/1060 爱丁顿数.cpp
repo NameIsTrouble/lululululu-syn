@@ -20,9 +20,7 @@ int main()
     cin >> N;
 
     for (int i = 0; i < N; i++)
-    {
         cin >> temp[i];
-    }
 
     sort(temp, temp + N, cmp);
 
@@ -30,19 +28,15 @@ int main()
     bool flag = false;
 
     for (int i = max - 2 > N ? N : max - 2; i >= 0; i--)
-    {
         if (temp[i] > i + 1)
         {
             flag = true;
             cout << i + 1 << endl;
             break;
         }
-    }
 
     if (!flag)
-    {
-        cout << 0 <<endl;
-    }
+        cout << 0 << endl;
 
     system("pause");
     return 0;

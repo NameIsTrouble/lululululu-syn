@@ -32,6 +32,7 @@ int main()
     sort(member, member + n, cmp);
 
     cout << member[0].Id << " " << member[n - 1].Id << endl;
+
     system("pause");
     return 0;
 }

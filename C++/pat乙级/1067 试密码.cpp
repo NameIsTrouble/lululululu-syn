@@ -2,7 +2,7 @@
     水题
 */
 #include <iostream>
-#include <string>//getline();
+#include <string> //getline();
 
 using namespace std;
 
@@ -13,24 +13,21 @@ int main()
     int num = 0;
     cin >> CorPas;
     cin >> n;
-    getchar();//这行不要删 有用
+    getchar(); //这行不要删 有用
+
     while (1)
     {
         getline(cin, cP);
         if (cP == "#")
-        {
             break;
-        }
         if (cP == CorPas)
         {
             cout << "Welcome in\n";
             break;
         }
         else
-        {
             num++;
-            cout << "Wrong password: " << cP << endl; 
-        }
+        cout << "Wrong password: " << cP << endl;
         if (num == n)
         {
             cout << "Account locked\n";

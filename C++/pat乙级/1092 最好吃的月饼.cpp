@@ -15,13 +15,9 @@ struct node
 bool cmp(node a, node b)
 {
     if (a.num == b.num)
-    {
         return a.rank < b.rank;
-    }
     else
-    {
         return a.num > b.num;
-    }
 }
 
 int main()
@@ -31,8 +27,6 @@ int main()
     node MoonCake[N];
 
     for (int i = 0; i < M; i++)
-    {
-
         for (int j = 0; j < N; j++)
         {
             if (!i)
@@ -45,20 +39,17 @@ int main()
             cin >> temp;
             MoonCake[j].num += temp;
         }
-    }
 
     sort(MoonCake, MoonCake + N, cmp);
 
     long long maxnum = MoonCake[0].num;
-    cout << maxnum << endl << MoonCake[0].rank;
+    cout << maxnum << endl
+         << MoonCake[0].rank;
 
     for (int i = 1; i < N; i++)
-    {
         if (MoonCake[i].num == maxnum)
-        {
             cout << " " << MoonCake[i].rank;
-        }
-    }
+
     cout << endl;
 
     system("pause");

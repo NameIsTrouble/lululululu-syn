@@ -9,7 +9,7 @@ using namespace std;
 void print(int a, int b)
 {
     int ans = a * b;
-    bool vis = false;//判断是否已经输出一位不为0的数
+    bool vis = false; //判断是否已经输出一位不为0的数
 
     /*循环输出*/
     while (ans)
@@ -21,10 +21,8 @@ void print(int a, int b)
             vis = true;
         }
         else if (vis)
-        {
             cout << ans % 10;
-        }
-        
+
         ans /= 10;
     }
 

@@ -41,11 +41,11 @@ int main()
     for (int i = 0; i < mid.size(); ++i)
         if (mid[i].data < 0)
             ans.push_back(mid[i]);
-    
+
     for (int i = 0; i < mid.size(); ++i)
         if (mid[i].data >= 0 && mid[i].data <= K)
             ans.push_back(mid[i]);
-    
+
     for (int i = 0; i < mid.size(); ++i)
         if (mid[i].data > K)
             ans.push_back(mid[i]);

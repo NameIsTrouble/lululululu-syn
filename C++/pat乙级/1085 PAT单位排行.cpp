@@ -19,20 +19,12 @@ vector<node> ans;                 //整理后的学校
 bool cmp(node a, node b)
 {
     if (a.TotalScore == b.TotalScore)
-    {
         if (a.Num == b.Num)
-        {
             return a.school < b.school;
-        }
         else
-        {
             return a.Num < b.Num;
-        }
-    }
     else
-    {
         return a.TotalScore > b.TotalScore;
-    }
 }
 
 int main()
@@ -48,9 +40,7 @@ int main()
 
         /*将学校名称小写*/
         for (int i = 0; i < col.size(); i++)
-        {
             col[i] = tolower(col[i]);
-        }
 
         /*如果此前没有出现过该学校 那么在map里新建*/
         if (list.find(col) == list.end())
@@ -94,12 +84,9 @@ int main()
 
     /*遍历输出学校信息*/
     for (int i = 0; i < ns; i++)
-    {
         /*如果是第一个学校 则直接输出信息*/
         if (!i)
-        {
             cout << ans[i].Rank << " " << ans[i].school << " " << ans[i].TotalScore << " " << ans[i].Num << endl;
-        }
         /*如果不是第一个学校*/
         else
         {
@@ -116,7 +103,6 @@ int main()
                 cout << ans[i].Rank << " " << ans[i].school << " " << ans[i].TotalScore << " " << ans[i].Num << endl;
             }
         }
-    }
 
     system("pause");
     return 0;

@@ -18,7 +18,6 @@ int main()
         vector<string> temp;
 
         for (int j = 0; j < a.size(); ++j)
-        {
             if (a[j] == '[' && !exifirst)
             {
                 index_fir = j; // 标记[下标
@@ -29,7 +28,6 @@ int main()
                 exifirst = false;
                 temp.push_back(a.substr(index_fir + 1, j - index_fir - 1));
             }
-        }
 
         face.push_back(temp);
     }

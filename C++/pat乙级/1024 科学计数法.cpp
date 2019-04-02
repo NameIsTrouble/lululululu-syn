@@ -19,13 +19,11 @@ int main()
         int sub_index;
 
         for (int i = 1; i < a.size(); ++i)
-        {
             if (a[i] == 'E') //标记E的下标
             {
                 sub_index = i;
                 break;
             }
-        }
 
         long long temp = 0;
 
@@ -36,18 +34,14 @@ int main()
         if (a[sub_index + 1] == '-')
         {
             for (int i = 0; i <= temp; ++i)
-            {
                 if (i == 1)
                     ans.push_back('.');
                 else
                     ans.push_back('0');
-            }
 
             for (int i = 1; i < sub_index; ++i)
-            {
                 if (i != 2)
                     ans.push_back(a[i]);
-            }
         }
         //当E后为+时 分三种情况
         else

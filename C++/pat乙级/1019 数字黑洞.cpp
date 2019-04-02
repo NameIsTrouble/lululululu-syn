@@ -29,9 +29,7 @@ void make_digit(int *x, int y)
 bool judge(int x[])
 {
 	if (x[0] == x[1] && x[0] == x[2] && x[0] == x[3] && x[1] == x[2] && x[1] == x[3] && x[2] == x[3])
-	{
 		return false;
-	}
 	else
 		return true;
 }
@@ -44,71 +42,74 @@ int main()
 	int first = N, second;
 	memset(digit, 0, sizeof(digit));
 	make_digit(digit, first);
+
 	if (judge(digit))
-	{
 		while (true)
 		{
 			memset(digit, 0, sizeof(digit));
 			make_digit(digit, first);
 			sort(digit, digit + 4, cmpdown);
 			first = 0, second = 0;
+
 			for (int i = 0; i < 4; i++)
 			{
 				first *= 10;
 				first += digit[i];
 			}
+
 			sort(digit, digit + 4, cmpup);
+
 			for (int i = 0; i < 4; i++)
 			{
 				second *= 10;
 				second += digit[i];
 			}
+
 			if (first - second == 6174)
 			{
 				sort(digit, digit + 4, cmpdown);
+
 				for (int i = 0; i < 4; i++)
-				{
 					cout << digit[i];
-				}
+
 				cout << " - ";
 				sort(digit, digit + 4, cmpup);
+
 				for (int i = 0; i < 4; i++)
-				{
 					cout << digit[i];
-				}
+
 				cout << " = " << setfill('0') << setw(4) << first - second << endl;
 				break;
 			}
 			else
 			{
 				sort(digit, digit + 4, cmpdown);
+
 				for (int i = 0; i < 4; i++)
-				{
 					cout << digit[i];
-				}
+
 				cout << " - ";
 				sort(digit, digit + 4, cmpup);
+
 				for (int i = 0; i < 4; i++)
-				{
 					cout << digit[i];
-				}
+
 				cout << " = " << setfill('0') << setw(4) << first - second << endl;
 				first = first - second;
 			}
 		}
-	}
 	else
 	{
 		sort(digit, digit + 4, cmpdown);
+
 		for (int i = 0; i < 4; i++)
-		{
 			cout << digit[i];
-		}
+
 		cout << " - ";
+
 		for (int i = 0; i < 4; i++)
-		{
 			cout << digit[i];
-		}
+
 		cout << " = 0000\n";
 	}
 

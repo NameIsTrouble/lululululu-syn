@@ -20,7 +20,6 @@ int main()
             continue;
         }
         if (n2 > n1)
-        {
             switch (b)
             {
             case 1:
@@ -32,9 +31,7 @@ int main()
                 T -= t;
                 break;
             }
-        }
         else
-        {
             switch (b)
             {
             case 0:
@@ -46,14 +43,13 @@ int main()
                 T -= t;
                 break;
             }
-        }
         if (T <= 0)
         {
             cout << "Game Over.\n";
             break;
         }
     }
-    
+
     system("pause");
     return 0;
 }

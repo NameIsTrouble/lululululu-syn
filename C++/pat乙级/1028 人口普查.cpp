@@ -34,42 +34,38 @@ bool judge(human a)
 bool cmp(human a, human b)
 {
     if (a.year == b.year)
-    {
         if (a.month == b.month)
-        {
             return a.day > b.day;
-        }
         else
-        {
             return a.month > b.month;
-        }
-    }
     else
-    {
         return a.year > b.year;
-    }
 }
 
 int main()
 {
     int N, num = 0;
     cin >> N;
+
     for (int i = 0; i < N; i++)
     {
         human a;
         cin >> a.name;
         scanf("%d/%d/%d", &a.year, &a.month, &a.day);
-        if (judge(a))/*如果合法 算入temp序列*/
+        if (judge(a)) /*如果合法 算入temp序列*/
         {
             temp[num] = a;
             num++;
         }
     }
+
     sort(temp, temp + num, cmp);
+
     if (num)
         cout << num << " " << temp[num - 1].name << " " << temp[0].name << endl;
     else
         cout << 0 << endl;
+
     system("pause");
     return 0;
 }

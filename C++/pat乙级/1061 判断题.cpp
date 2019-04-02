@@ -14,14 +14,10 @@ int main()
     cin >> N >> M;
 
     for (int i = 0; i < M; i++)
-    {
         cin >> value[i];
-    }
 
     for (int i = 0; i < M; i++)
-    {
         cin >> judge[i];
-    }
 
     while (N--)
     {
@@ -31,12 +27,11 @@ int main()
             int x;
             cin >> x;
             if (x == judge[i])
-            {
                 sum += value[i];
-            }
         }
-        cout << sum <<endl;
+        cout << sum << endl;
     }
+
     system("pause");
     return 0;
 }

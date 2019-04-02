@@ -28,7 +28,7 @@ int N, M;
 int main()
 {
     ios::sync_with_stdio(false);
-    cin >> N >> M; 
+    cin >> N >> M;
 
     for (int i = 0; i < N; i++)
         cin >> temp[i].ID >> temp[i].score;
@@ -48,14 +48,14 @@ int main()
         case '1':
         {
             for (int i = 0; i < N; i++)
-            {
                 if (temp[i].ID[0] == Op[0])
                 {
                     ans.push_back(temp[i]);
                     judge = true;
                 }
-            }
+
             sort(ans.begin(), ans.end(), cmpins);
+
             if (judge)
                 for (int i = 0; i < ans.size(); i++)
                     printf("%s %d\n", ans[i].ID.c_str(), ans[i].score);
@@ -69,14 +69,13 @@ int main()
             int n = 0, s = 0;
 
             for (int i = 0; i < N; i++)
-            {
                 if (temp[i].ID.substr(1, 3) == Op)
                 {
                     judge = true;
                     n++;
                     s += temp[i].score;
                 }
-            }
+
             if (judge)
                 printf("%d %d\n", n, s);
             else

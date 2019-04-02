@@ -23,14 +23,14 @@ int main()
 
     int max = 0, mark;
     for (int i = 1; i <= 1000; i++)
-    {
-        if(Temp[i] > max)
+        if (Temp[i] > max)
         {
             max = Temp[i];
             mark = i;
         }
-    }
+
     cout << mark << " " << Temp[mark] << endl;
+
     system("pause");
     return 0;
 }

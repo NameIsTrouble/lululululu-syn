@@ -19,8 +19,8 @@ int main()
         int num = 0;
         bool flag = false;
         string temp;
+
         for (int j = 0; j < ans.size(); ++j)
-        {
             if (ans[j] == ch)
             {
                 num++;
@@ -33,7 +33,6 @@ int main()
                 ch = ans[j];
                 num = 1;
             }
-        }
 
         if (flag)
         {
@@ -45,7 +44,7 @@ int main()
             temp += ch;
             temp += "1";
         }
-        
+
         ans = temp;
         temp = "";
     }

@@ -6,8 +6,8 @@
 
 using namespace std;
 
-map<string, bool> IsExi;//判断是否已中奖
-map<int, string> line;//转发的人
+map<string, bool> IsExi; //判断是否已中奖
+map<int, string> line;   //转发的人
 
 int main()
 {
@@ -20,13 +20,11 @@ int main()
         cin >> a;
         line[i] = a;
     }
-    
-    bool judge = false;//判断是否有人中奖
+
+    bool judge = false; //判断是否有人中奖
 
     for (int i = s; i <= m; i += n)
-    {
         while (1)
-        {
             if (!IsExi[line[i]])
             {
                 judge = true;
@@ -35,16 +33,10 @@ int main()
                 break;
             }
             else
-            {
                 i++;
-            }
-        }
-    }
 
     if (!judge)
-    {
         cout << "Keep going...\n";
-    }
 
     system("pause");
     return 0;

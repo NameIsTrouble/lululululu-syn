@@ -14,7 +14,7 @@ int main()
 {
 
     int ch;
-    
+
     while ((ch = getchar()) != '\n')
     {
         set<char>::iterator it = Ex.find(ch);
@@ -24,7 +24,7 @@ int main()
             Ex.insert(ch);
         }
     }
-    
+
     while ((ch = getchar()) != '\n')
     {
         set<char>::iterator it = Ex.find(ch);
@@ -36,9 +36,7 @@ int main()
     }
 
     for (vector<char>::iterator i = prf.begin(); i != prf.end(); i++)
-    {
         cout << *i;
-    }
 
     cout << endl;
 

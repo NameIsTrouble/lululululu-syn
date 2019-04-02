@@ -15,7 +15,6 @@ void zip()
 
     // 循环判断
     for (int i = 0; i < title.size(); ++i)
-    {
         // 如果读取字符与选择字符相同 num++
         if (title[i] == x)
         {
@@ -32,7 +31,6 @@ void zip()
             num = 1;
             flag = false;
         }
-    }
 
     // 如果结束循环时字符连续
     if (flag)
@@ -54,12 +52,9 @@ void unzip()
     string n;
     int cnt = 1;
     for (int i = 0; i < title.size(); ++i)
-    {
         // 判断是否是数字
         if (isdigit(title[i]))
-        {
             n += title[i];
-        }
         else
         {
             if (n.size())
@@ -71,7 +66,6 @@ void unzip()
             n = "";
             cnt = 1;
         }
-    }
 
     cout << endl;
 }
