@@ -1,23 +1,43 @@
-//WA
-#include<iostream>
-#include<cstring>
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
 using namespace std;
+
 int main()
 {
-	long long int t;
-	string a[10000][2];
-	cin>>t;
-	for(int i=1;i<=t;i++)
+	int n;
+	cin >> n;
+
+	for (int i = 1; i <= n; ++i)
 	{
-		cin>>a[i][0];
-		cin>>a[i][1];
+		string a, b, ans;
+		cin >> a >> b;
+		cout << "Case " << i << ":\n"
+			 << a << " + " << b << " = ";
+
+		int l = (a.size() > b.size() ? a.size() : b.size());
+
+		reverse(a.begin(), a.end());
+		reverse(b.begin(), b.end());
+		a.append(l - a.size(), '0');
+		b.append(l - b.size(), '0');
+
+		int temp = 0;
+
+		for (int i = 0; i < l; ++i)
+		{
+			ans.push_back((temp + b[i] - '0' + a[i] - '0') % 10 + '0');
+			temp = (temp + b[i] - '0' + a[i] - '0') / 10;
+		}
+
+		if (temp)
+			ans.push_back(temp + '0');
+
+		reverse(ans.begin(), ans.end());
+
+		cout << ans << endl;
 	}
-	int l1=strlen(a[10000])
-	for(int i=1;i<=t;i++)
-	{
-		cout<<"Case "<<i<<':'<<endl;
-		cout<<a[i][0]<<" + "<<a[i][1]<<" = "<<a[i][0]+a[i][1]<<endl;
-	}
+
 	return 0;
 }
-//ͬλ��� 
