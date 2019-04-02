@@ -4,18 +4,18 @@
 
 using namespace std;
 
-vector<int> primer;
-bool isprimer[100005];
+vector<int> Prime;
+bool IsPrime[100005];
 
-void GetPrimer(int n)
+void GetPrime(int n)
 {
 	for (int i = 2; i <= n; ++i)
-		if (isprimer[i])
+		if (IsPrime[i])
 		{
 			for (int j = i + i; j < n; j += i)
-				isprimer[j] = false;
+				IsPrime[j] = false;
 
-			primer.push_back(i);
+			Prime.push_back(i);
 		}
 }
 
@@ -24,13 +24,13 @@ int main()
 	int n;
 	cin >> n;
 
-	memset(isprimer, true, sizeof(isprimer));
+	memset(IsPrime, true, sizeof(IsPrime));
 
-	GetPrimer(n);
+	GetPrime(n);
 	int cnt = 0;
 
-	for (int i = 1; i < primer.size(); ++i)
-		if (primer[i] - primer[i - 1] == 2)
+	for (int i = 1; i < Prime.size(); ++i)
+		if (Prime[i] - Prime[i - 1] == 2)
 			cnt++;
 
 	cout << cnt << endl;
