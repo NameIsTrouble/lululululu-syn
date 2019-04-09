@@ -7,11 +7,14 @@ int main()
 {
 	int N, num[1000];
 	cin >> N;
+
 	for (int i = 0; i < N; i++)
 		cin >> num[i];
+
 	int sumA1 = 0, sumA2 = 0, sumA4 = 0, cntA3 = 0, cntA4 = 0;
 	bool A2 = false;
 	int sign = 1, max = 0;
+
 	for (int i = 0; i < N; i++)
 	{
 		if (num[i] % 5 == 0 && num[i] % 2 == 0)
@@ -30,11 +33,10 @@ int main()
 			cntA4++;
 		}
 		else if (num[i] % 5 == 4)
-		{
 			if (max < num[i])
 				max = num[i];
-		}
 	}
+	
 	if (sumA1)
 		cout << sumA1;
 	else

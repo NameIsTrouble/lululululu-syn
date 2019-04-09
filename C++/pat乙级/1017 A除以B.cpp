@@ -1,28 +1,28 @@
+/*
+    注意特判输出字符串只有一位的情况
+*/
 #include <iostream>
-#include <string>
 
 using namespace std;
 
 int main()
 {
-    string s;
-    int a, t = 0, temp = 0;
-    cin >> s >> a;
-    int len = s.length();
-    t = (s[0] - '0') / a;
+    bool flag = false;
+    string A, Q;
+    int B, R = 0;
+    cin >> A >> B;
 
-    if ((t != 0 && len > 1) || len == 1)
-        cout << t;
-
-    temp = (s[0] - '0') % a;
-
-    for (int i = 1; i < len; i++)
+    for (int i = 0; i < A.size(); ++i)
     {
-        t = (temp * 10 + s[i] - '0') / a;
-        cout << t;
-        temp = (temp * 10 + s[i] - '0') % a;
+        Q.push_back(((A[i] - '0' + 10 * R) / B) + '0');
+        R = (A[i] - '0' + 10 * R) % B;
     }
 
-    cout << " " << temp;
+    for (int i = 0; i < Q.size(); ++i)
+        if (!(!i && Q[i] == '0') || Q.size() == 1)
+            cout << Q[i];
+
+    cout << " " << R << endl;
+
     return 0;
 }
