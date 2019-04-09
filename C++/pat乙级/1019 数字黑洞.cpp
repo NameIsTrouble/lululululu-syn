@@ -1,118 +1,36 @@
 #include <iostream>
 #include <algorithm>
-#include <string.h>
 #include <iomanip>
 
 using namespace std;
 
-int N;
-/*从大到小排序*/
-bool cmpdown(int a, int b)
+bool cmp(char a, char b)
 {
 	return a > b;
 }
-/*从小到大排序*/
-bool cmpup(int a, int b)
-{
-	return a < b;
-}
-//获取各个位置上的数字
-void make_digit(int *x, int y)
-{
-	for (int i = 0; y; i++)
-	{
-		x[i] = y % 10;
-		y /= 10;
-	}
-}
-/*判断是否是0*/
-bool judge(int x[])
-{
-	if (x[0] == x[1] && x[0] == x[2] && x[0] == x[3] && x[1] == x[2] && x[1] == x[3] && x[2] == x[3])
-		return false;
-	else
-		return true;
-}
-
-int digit[4];
 
 int main()
 {
-	cin >> N;
-	int first = N, second;
-	memset(digit, 0, sizeof(digit));
-	make_digit(digit, first);
+	int x;
+	cin >> x;
 
-	if (judge(digit))
-		while (true)
-		{
-			memset(digit, 0, sizeof(digit));
-			make_digit(digit, first);
-			sort(digit, digit + 4, cmpdown);
-			first = 0, second = 0;
-
-			for (int i = 0; i < 4; i++)
-			{
-				first *= 10;
-				first += digit[i];
-			}
-
-			sort(digit, digit + 4, cmpup);
-
-			for (int i = 0; i < 4; i++)
-			{
-				second *= 10;
-				second += digit[i];
-			}
-
-			if (first - second == 6174)
-			{
-				sort(digit, digit + 4, cmpdown);
-
-				for (int i = 0; i < 4; i++)
-					cout << digit[i];
-
-				cout << " - ";
-				sort(digit, digit + 4, cmpup);
-
-				for (int i = 0; i < 4; i++)
-					cout << digit[i];
-
-				cout << " = " << setfill('0') << setw(4) << first - second << endl;
-				break;
-			}
-			else
-			{
-				sort(digit, digit + 4, cmpdown);
-
-				for (int i = 0; i < 4; i++)
-					cout << digit[i];
-
-				cout << " - ";
-				sort(digit, digit + 4, cmpup);
-
-				for (int i = 0; i < 4; i++)
-					cout << digit[i];
-
-				cout << " = " << setfill('0') << setw(4) << first - second << endl;
-				first = first - second;
-			}
-		}
-	else
+	do
 	{
-		sort(digit, digit + 4, cmpdown);
+		string t1, t2;
+		t1 = t2 = to_string(x);
 
-		for (int i = 0; i < 4; i++)
-			cout << digit[i];
+		sort(t1.begin(), t1.end(), cmp);
+		sort(t2.begin(), t2.end());
 
-		cout << " - ";
+		t1.append(4 - t1.size(), '0');	//补后导零
+		t2.insert(0, 4 - t2.size(), '0'); //补前导零
 
-		for (int i = 0; i < 4; i++)
-			cout << digit[i];
+		cout << t1 << " - " << t2 << " = ";
 
-		cout << " = 0000\n";
-	}
+		x = stoi(t1) - stoi(t2);
 
-	system("pause");
+		cout << setw(4) << setfill('0') << x << endl;
+	} while (x != 6174 && x);
+
 	return 0;
 }
