@@ -1,22 +1,21 @@
 /*
     贪心
 */
-
 #include <iostream>
 #include <algorithm>
 #include <iomanip>
 
 using namespace std;
 
-struct MoonCake
-{
-    double spare; //库存
-    double price; //总价格
-    double ratio; //性价比
-} temp[2020];
-
 /*定义结构体*/
-bool cmp(MoonCake a, MoonCake b)
+struct node
+{
+    double spare, //库存
+        price, //总价格
+        ratio; //性价比
+} moonCake[2020];
+
+bool cmp(node a, node b)
 {
     return a.ratio > b.ratio;
 }
@@ -28,33 +27,33 @@ int main()
     cin >> N >> D;
 
     for (int i = 0; i < N; i++)
-        cin >> temp[i].spare;
+        cin >> moonCake[i].spare;
 
     for (int i = 0; i < N; i++)
-        cin >> temp[i].price;
+        cin >> moonCake[i].price;
 
-    /*计算结构体*/
+    /*计算性价比*/
     for (int i = 0; i < N; i++)
-        temp[i].ratio = temp[i].price / temp[i].spare;
+        moonCake[i].ratio = moonCake[i].price / moonCake[i].spare;
 
-    sort(temp, temp + N, cmp);
+    sort(moonCake, moonCake + N, cmp);
 
-    int heel = D;
-    double sum = 0.0;
+    int remindN = D;
+    double income = 0;
 
     for (int i = 0; i < N; i++)
-        if (heel >= temp[i].spare)
+        if (remindN >= moonCake[i].spare)
         {
-            sum += temp[i].price;
-            heel -= temp[i].spare;
+            income += moonCake[i].price;
+            remindN -= moonCake[i].spare;
         }
         else
         {
-            sum += heel * temp[i].ratio;
+            income += remindN * moonCake[i].ratio;
             break;
         }
 
-    cout << fixed << setprecision(2) << sum << endl;
+    cout << fixed << setprecision(2) << income << endl;
 
     system("pause");
     return 0;
