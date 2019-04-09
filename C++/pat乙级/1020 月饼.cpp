@@ -38,23 +38,21 @@ int main()
 
     sort(moonCake, moonCake + N, cmp);
 
-    int remindN = D;
     double income = 0;
 
     for (int i = 0; i < N; i++)
-        if (remindN >= moonCake[i].spare)
+        if (D >= moonCake[i].spare)
         {
             income += moonCake[i].price;
-            remindN -= moonCake[i].spare;
+            D -= moonCake[i].spare;
         }
         else
         {
-            income += remindN * moonCake[i].ratio;
+            income += D * moonCake[i].ratio;
             break;
         }
 
     cout << fixed << setprecision(2) << income << endl;
 
-    system("pause");
     return 0;
 }
