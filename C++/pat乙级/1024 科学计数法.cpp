@@ -2,88 +2,50 @@
     这道题要注意当第二个符号为+时是否可以将全部有效数字提取到小数点前
 */
 #include <iostream>
-#include <vector>
+#include <string>
 
 using namespace std;
 
+string num, ans, indexNum; //科学计数法的数字 输出的数字 指数
+
 int main()
 {
-    string a;
-    while (cin >> a)
+
+    cin >> num;
+
+    for (int i = 1; i < num.size(); ++i)
+        if (isdigit(num[i]))
+            ans.push_back(num[i]); //将除符号和指数之外的数字在ans储存
+        else if (num[i] == 'E')
+        {
+            for (int j = i + 1; j < num.size(); ++j)
+                indexNum.push_back(num[j]); //将指数储存在indexNum
+
+            break;
+        }
+
+    int temp = stoi(indexNum.substr(1)); //移动的位数
+
+    if (indexNum[0] == '-') //小数点前移
     {
-        vector<char> ans;
+        if (temp != 1)
+            ans.insert(0, temp - 1, '0'); //补足小数点之后的零
 
-        if (a[0] == '-')
-            ans.push_back(a[0]);
-
-        int sub_index;
-
-        for (int i = 1; i < a.size(); ++i)
-            if (a[i] == 'E') //标记E的下标
-            {
-                sub_index = i;
-                break;
-            }
-
-        long long temp = 0;
-
-        for (int i = sub_index + 2; i < a.size(); ++i)
-            temp = temp * 10 + a[i] - '0'; //记录E后的数据
-
-        //当E后为-时直接将小数点提前 即添加前导0即可
-        if (a[sub_index + 1] == '-')
-        {
-            for (int i = 0; i <= temp; ++i)
-                if (i == 1)
-                    ans.push_back('.');
-                else
-                    ans.push_back('0');
-
-            for (int i = 1; i < sub_index; ++i)
-                if (i != 2)
-                    ans.push_back(a[i]);
-        }
-        //当E后为+时 分三种情况
-        else
-        {
-            //当小数点不能移至有效数字后时
-            if (sub_index > temp + 3)
-            {
-                for (int i = 1; i < temp + 3; ++i)
-                    if (i != 2)
-                        ans.push_back(a[i]);
-
-                ans.push_back('.');
-
-                for (int i = temp + 3; i < sub_index; ++i)
-                    ans.push_back(a[i]);
-            }
-            //当小数点恰好移至有效数字后时
-            else if (sub_index == temp + 3)
-            {
-                for (int i = 1; i < sub_index; ++i)
-                    if (i != 2)
-                        ans.push_back(a[i]);
-            }
-            //当小数点可以移至有效数字后时
-            else
-            {
-                for (int i = 1; i < sub_index; ++i)
-                    if (i != 2)
-                        ans.push_back(a[i]);
-
-                for (int i = 0; i < temp - sub_index + 3; ++i)
-                    ans.push_back('0');
-            }
-        }
-
-        //循环输出
-        for (int i = 0; i < ans.size(); ++i)
-            cout << ans[i];
-
-        cout << endl;
+        ans.insert(0, ".");
+        ans.insert(0, "0");
+    }
+    else //小数点后移
+    {
+        if (temp >= ans.size() - 1) //当有效位数刚好使小数点在最后一位有效数字后或不够小数点移动时 补足后导零 后不加小数点
+            ans.append(temp - ans.size() + 1, '0');
+        else //当足够小数点移动时 在合适位置加小数点
+            ans.insert(1 + temp, ".");
     }
 
-    system("pause");
+    if (num[0] == '-') //当为负数时 加符号
+        ans.insert(0, num.substr(0, 1));
+
+    cout << ans << endl;
+
     return 0;
 }
