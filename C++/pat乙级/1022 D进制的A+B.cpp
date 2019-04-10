@@ -1,26 +1,26 @@
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
+string str;
+
 int main()
 {
-	long long int A, B, C, D;
-	int a[10000] = {0};
-	scanf("%d%d%d", &A, &B, &D);
-	C = A + B;
-	int i = 0;
+	int A, B, D;
+	cin >> A >> B >> D;
 
-	while (1)
+	int num = A + B;
+
+	do
 	{
-		a[i] = C % D;
-		C /= D;
-		i++;
-		if (C == 0)
-			break;
-	}
+		str.push_back(num % D + '0');
+		num /= D;
+	} while (num);
 
-	for (int j = i - 1; j >= 0; j--)
-		printf("%d", a[j]);
+	reverse(str.begin(), str.end());
+
+	cout << str << endl;
 
 	return 0;
 }

@@ -1,26 +1,27 @@
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
+int n[10];
+string str;
+
 int main()
 {
-	int Num[10];
-
-	for (int i = 0; i < 10; i++)
-		scanf("%d", &Num[i]);
-
-	for (int i = 1; i <= 9; i++)
-		if (Num[i] != 0)
+	for (int i = 0; i < 10; ++i)
+	{
+		cin >> n[i];
+		if (i && n[i] && !str.size())
 		{
-			printf("%d", i);
-			Num[i]--;
-			break;
+			str.push_back(i + '0');
+			--n[i];
 		}
+	}
 
-	for (int i = 0; i <= 9; i++)
-		if (Num[i] != 0)
-			for (int j = 0; j < Num[i]; j++)
-				printf("%d", i);
-
+	for (int i = 0; i < 10; ++i)
+		str.append(n[i], i + '0');
+	
+	cout << str << endl;	
+	
 	return 0;
 }
