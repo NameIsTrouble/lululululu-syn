@@ -10,7 +10,6 @@ string num, ans, indexNum; //科学计数法的数字 输出的数字 指数
 
 int main()
 {
-
     cin >> num;
 
     for (int i = 1; i < num.size(); ++i)
