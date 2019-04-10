@@ -7,13 +7,12 @@
 
 using namespace std;
 
-/*定义结构体*/
 struct node
 {
     double spare, //库存
-        price, //总价格
-        ratio; //性价比
-} moonCake[2020];
+        price,    //总价格
+        ratio;    //性价比
+};
 
 bool cmp(node a, node b)
 {
@@ -26,29 +25,30 @@ int main()
 {
     cin >> N >> D;
 
+    node moonCake[N];
+
     for (int i = 0; i < N; i++)
         cin >> moonCake[i].spare;
 
     for (int i = 0; i < N; i++)
         cin >> moonCake[i].price;
 
-    /*计算性价比*/
-    for (int i = 0; i < N; i++)
-        moonCake[i].ratio = moonCake[i].price / moonCake[i].spare;
+    for (auto &it : moonCake)
+        it.ratio = it.price / it.spare;
 
     sort(moonCake, moonCake + N, cmp);
 
     double income = 0;
 
-    for (int i = 0; i < N; i++)
-        if (D >= moonCake[i].spare)
+    for (auto &it : moonCake)
+        if (D >= it.spare)
         {
-            income += moonCake[i].price;
-            D -= moonCake[i].spare;
+            income += it.price;
+            D -= it.spare;
         }
         else
         {
-            income += D * moonCake[i].ratio;
+            income += D * it.ratio;
             break;
         }
 

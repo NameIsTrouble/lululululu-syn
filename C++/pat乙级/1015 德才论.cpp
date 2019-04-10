@@ -52,13 +52,12 @@ int main()
 
     sort(stu, stu + n, cmp);
 
-    printf("%d\n", cnt);
+    cout << cnt << endl;
 
     for (int i = 1; i < 5; i++)
-        for (int j = 0; j < n; j++)
-            if (stu[j].lev == i)
-                printf("%d %d %d\n", stu[j].idnum, stu[j].ds, stu[j].cs);
+        for (auto &it : stu)
+            if (it.lev == i)
+                cout << it.idnum << " " << it.ds << " " << it.cs << endl;
 
-    system("pause");
     return 0;
 }

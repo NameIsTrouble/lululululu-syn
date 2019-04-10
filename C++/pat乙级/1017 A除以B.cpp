@@ -7,17 +7,16 @@ using namespace std;
 
 int main()
 {
-    bool flag = false;
     string A, Q;
     int B, R = 0;
     cin >> A >> B;
 
-    for (int i = 0; i < A.size(); ++i)
+    for (auto &it : A)
     {
-        Q.push_back(((A[i] - '0' + 10 * R) / B) + '0');
-        R = (A[i] - '0' + 10 * R) % B;
+        Q.push_back(((it - '0' + 10 * R) / B) + '0');
+        R = (it - '0' + 10 * R) % B;
     }
-
+            
     for (int i = 0; i < Q.size(); ++i)
         if (!(!i && Q[i] == '0') || Q.size() == 1)
             cout << Q[i];

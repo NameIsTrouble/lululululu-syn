@@ -16,11 +16,7 @@ int main()
 
 	for (int i = n - m; i < n; ++i)
 		for (int j = i; j > i - n + m; --j)
-		{
-			int temp = ans[j];
-			ans[j] = ans[j - 1];
-			ans[j - 1] = temp;
-		}
+			swap(ans[j], ans[j - 1]);
 
 	for (int i = 0; i < n; ++i)
 		cout << ans[i] << (i == n - 1 ? '\n' : ' '); 
