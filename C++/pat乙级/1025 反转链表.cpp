@@ -24,24 +24,19 @@ int main()
 
     cin >> F >> N >> K;
 
-    node data[N];
-
     //将地址作为下标插入进map里
-    for (auto &i : data)
+    for (int i = 0; i < N; ++i)
     {
-        cin >> i.Address >> i.Data >> i.Next;
-        address[i.Address] = i;
+        node temp;
+        cin >> temp.Address >> temp.Data >> temp.Next;
+        address[temp.Address] = temp;
     }
 
     //构建链表
     while (F != "-1")
     {
-        map<string, node>::iterator it = address.find(F);
-        if (it != address.end())
-        {
-            list.push_back(it->second);
-            F = it->second.Next;
-        }
+        list.push_back(address[F]);
+        F = address[F].Next;
     }
 
     //反转链表
