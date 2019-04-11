@@ -12,53 +12,44 @@ struct node
 {
     string Address, Next;
     int Data;
-} lis[100005];
+};
 
-vector<node> mid;
-map<string, node> temp;
+vector<node> list;
+map<string, node> address;
 
 int main()
 {
-    ios::sync_with_stdio(false); //取消流同步
-    string f;
+    string F;
     int N, K;
-    cin >> f >> N >> K;
+
+    cin >> F >> N >> K;
+
+    node data[N];
 
     //将地址作为下标插入进map里
-    for (int i = 0; i < N; ++i)
+    for (auto &i : data)
     {
-        cin >> lis[i].Address >> lis[i].Data >> lis[i].Next;
-        temp[lis[i].Address] = lis[i];
+        cin >> i.Address >> i.Data >> i.Next;
+        address[i.Address] = i;
     }
 
     //构建链表
-    while (f != "-1")
+    while (F != "-1")
     {
-        map<string, node>::iterator it = temp.find(f);
-        if (it != temp.end())
+        map<string, node>::iterator it = address.find(F);
+        if (it != address.end())
         {
-            mid.push_back(it->second);
-            f = it->second.Next;
+            list.push_back(it->second);
+            F = it->second.Next;
         }
     }
 
-    int x = mid.size() / K; //这里注意mid.size()有可能比N小
-
     //反转链表
-    for (int i = 0; i < x; ++i)
-        reverse(mid.begin() + (i * K), mid.begin() + (i * K) + K);
+    for (int i = 0; i < list.size() / K; ++i)
+        reverse(list.begin() + i * K, list.begin() + (i + 1) * K);
 
-    //构建翻转后的链表
-    for (int i = 0; i < mid.size(); ++i)
-    {
-        if (i != mid.size() - 1)
-            mid[i].Next = mid[i + 1].Address;
-        else
-            mid[i].Next = "-1";
+    for (int i = 0; i < list.size(); ++i)
+        printf("%s %d %s\n", list[i].Address.c_str(), list[i].Data, (i == list.size() - 1 ? "-1" : list[i + 1].Address.c_str()));
 
-        printf("%s %d %s\n", mid[i].Address.c_str(), mid[i].Data, mid[i].Next.c_str());
-    }
-
-    system("pause");
     return 0;
 }
