@@ -2,6 +2,7 @@
 #include <vector>
 #include <string.h>
 #include <algorithm>
+#include <queue>
 #define INF 0x3f3f3f3f
 
 using namespace std;
@@ -10,6 +11,17 @@ struct Edge
 {
     int v, w;
     Edge(int _v, int _w) : v(_v), w(_w) {}
+};
+
+struct node
+{
+    int index, dis;
+    node(int _index, int _dis) : index(_index), dis(_dis) {}
+
+    bool operator<(const node &temp) const
+    {
+        return dis > temp.dis;
+    }
 };
 
 int main()
@@ -53,6 +65,25 @@ int main()
                 dis[v] = min(dis[v], dis[index] + w);
             }
         }
+
+        // 利用优先队列加速
+        /* priority_queue<node> list;
+        list.push(node(s, 0));
+
+        for (int i = 0; i < n - 1; ++i)
+        {
+            node temp = list.top();
+            list.pop();
+            int index = temp.index;
+            vis[index] = true;
+
+            for (int j = 0; j < edge[index].size(); ++j)
+            {
+                int v = edge[index][j].v, w = edge[index][j].w;
+                dis[v] = min(dis[v], dis[index] + w);
+                list.push(node(v, dis[v]));
+            }
+        } */
 
         int num;
         scanf("%d", &num);
