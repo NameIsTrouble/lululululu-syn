@@ -70,18 +70,26 @@ int main()
         /* priority_queue<node> list;
         list.push(node(s, 0));
 
-        for (int i = 0; i < n - 1; ++i)
+        while (!list.empty())
         {
             node temp = list.top();
-            list.pop();
             int index = temp.index;
+            list.pop();
+
+            if (vis[index])
+                continue;
+
             vis[index] = true;
 
             for (int j = 0; j < edge[index].size(); ++j)
             {
                 int v = edge[index][j].v, w = edge[index][j].w;
-                dis[v] = min(dis[v], dis[index] + w);
-                list.push(node(v, dis[v]));
+
+                if (dis[v] > dis[index] + w)
+                {
+                    dis[v] = dis[index] + w;
+                    list.push(node(v, dis[v]));
+                }
             }
         } */
 
