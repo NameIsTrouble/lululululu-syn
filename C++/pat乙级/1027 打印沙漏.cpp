@@ -1,52 +1,33 @@
 #include <iostream>
-#include <cstdio>
+#include <cmath>
 
 using namespace std;
 
 int main()
 {
-	int n, sum, l;
-	char a;
-	scanf("%d", &n);
-	scanf(" %c", &a);
+	int n;
+	char ch;
+	cin >> n >> ch;
 
-	for (int i = 1;; i++)
+	int l = sqrt((n + 1) / 2), sum = l * l * 2 - 1;
+
+	for (int i = 0; i < l; ++i)
 	{
-		sum = 2 * i * i - 1;
-		if (sum <= n && 2 * (i + 1) * (i + 1) - 1 > n)
-		{
-			l = i;
-			break;
-		}
+		string temp;
+		temp.append(i, ' ');
+		temp.append(2 * (l - i) - 1, ch);
+		cout << temp << endl;
 	}
 
-	int Num = 2 * l - 1;
-
-	for (int i = 1; i <= l; i++)
+	for (int i = 1; i < l; ++i)
 	{
-		for (int j = 1; j <= i - 1; j++)
-			printf("%c", ' ');
-
-		for (int j = 1; j <= Num - 2 * (i - 1); j++)
-		{
-			printf("%c", a);
-			if (j == Num - 2 * (i - 1))
-				printf("\n");
-		}
-	}
-	for (int i = 2; i <= l; i++)
-	{
-		for (int j = 1; j <= (Num - (2 * i) + 1) / 2; j++)
-			printf("%c", ' ');
-
-		for (int j = 1; j <= 2 * i - 1; j++)
-		{
-			printf("%c", a);
-			if (j == 2 * i - 1)
-				printf("\n");
-		}
+		string temp;
+		temp.append(l - i - 1, ' ');
+		temp.append(2 * i + 1, ch);
+		cout << temp << endl;
 	}
 
-	printf("%d\n", n - sum);
+	cout << n - sum << endl;
+
 	return 0;
 }

@@ -1,71 +1,40 @@
 #include <iostream>
-#include <iomanip>
 #include <algorithm>
 
 using namespace std;
 
-struct human
+struct node
 {
-    string name;
-    int year, month, day;
-} temp[100005];
-/*判断是否合法*/
-bool judge(human a)
+    string name, birth;
+};
+
+bool cmp(node a, node b)
 {
-    if (a.year > 2014 || a.year < 1814)
-    {
-        return false;
-    }
-    else
-    {
-        if (a.year == 2014 && a.month > 9)
-            return false;
-        else if (a.year == 2014 && a.month == 9 && a.day > 6)
-            return false;
-        else if (a.year == 1814 && a.month < 9)
-            return false;
-        else if (a.year == 1814 && a.month == 9 && a.day < 6)
-            return false;
-        else
-            return true;
-    }
-}
-/*排序*/
-bool cmp(human a, human b)
-{
-    if (a.year == b.year)
-        if (a.month == b.month)
-            return a.day > b.day;
-        else
-            return a.month > b.month;
-    else
-        return a.year > b.year;
+    return a.birth > b.birth;
 }
 
 int main()
 {
+    ios::sync_with_stdio(false); //关闭流同步 否则会超时
     int N, num = 0;
     cin >> N;
 
+    node list[N];
+
     for (int i = 0; i < N; i++)
     {
-        human a;
-        cin >> a.name;
-        scanf("%d/%d/%d", &a.year, &a.month, &a.day);
-        if (judge(a)) /*如果合法 算入temp序列*/
-        {
-            temp[num] = a;
-            num++;
-        }
+        node temp;
+        cin >> temp.name >> temp.birth;
+        if (temp.birth <= "2014/09/06" && temp.birth >= "1814/09/06")
+            list[num++] = temp;
     }
 
-    sort(temp, temp + num, cmp);
+    sort(list, list + num, cmp);
+
+    cout << num;
 
     if (num)
-        cout << num << " " << temp[num - 1].name << " " << temp[0].name << endl;
-    else
-        cout << 0 << endl;
+        cout << " " << list[num - 1].name << " " << list[0].name;
 
-    system("pause");
     return 0;
 }
