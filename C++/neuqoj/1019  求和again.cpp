@@ -1,23 +1,27 @@
 #include <iostream>
-#include <algorithm>
 
 using namespace std;
 
 int main()
 {
     int n;
-
-    while (cin >> n && n != -1)
+    while (cin >> n)
     {
-        string ans;
-        ans.append(n - 1, '0');
-        ans.push_back('5');
-        ans.append(n - 1, '0');
-        ans.push_back('5');
+        if (n == -1)
+            break;
 
-        reverse(ans.begin(), ans.end());
-        cout << ans << endl;        
+        if (!n)
+            cout << 1 << endl;
+        else
+        {
+            cout << 5;
+            for (int i = 1; i < n; ++i)
+                cout << 0;
+            cout << 5;
+            for (int i = 1; i < n; ++i)
+                cout << 0;
+            cout << endl;
+        }
     }
-
     return 0;
 }
