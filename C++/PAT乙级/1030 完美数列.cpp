@@ -23,7 +23,10 @@ int main()
             if (arr[j] <= arr[i] * p)
                 len = j - i + 1;
             else
+            {
+                --len;
                 break;
+            }
 
     cout << len << endl;
 
