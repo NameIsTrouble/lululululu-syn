@@ -1,35 +1,32 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
 
 using namespace std;
 
 int main()
 {
-    int N, p;
+    int N, ans = 0, lenTemp = 0;
+    long long p;
     cin >> N >> p;
 
-    vector<int> arr(N);
+    int arr[N];
 
     for (int i = 0; i < N; ++i)
         cin >> arr[i];
 
-    sort(arr.begin(), arr.end());
+    sort(arr, arr + N);
 
-    int len = N;
-
-    for (int i = 0; i < N - len + 1; ++i)
-        for (int j = i + len + 1; j < N; ++j)
-            if (arr[j] <= arr[i] * p)
-                len = j - i + 1;
+    for (int i = 0; i < N; ++i)
+        for (int j = i + lenTemp; j < N; ++j)
+        {
+            if (arr[i] * p >= arr[j])
+                lenTemp = j - i + 1;
             else
-            {
-                --len;
                 break;
-            }
+            ans = max(ans, lenTemp);
+        }
 
-    cout << len << endl;
-
-    system("pause");
+    cout << ans << endl;
+    
     return 0;
 }

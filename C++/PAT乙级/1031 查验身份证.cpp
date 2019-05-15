@@ -1,37 +1,39 @@
 #include <iostream>
+#include <stdlib.h>
 
 using namespace std;
 
+int weighted[18] = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2};
+char checksum[12] = {'1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'};
+
 int main()
 {
-    int plus[18] = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2};
-    char judge[12] = {'1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'};
-    int s = 1, n;
-    cin >> n;
+    int N;
+    bool judge = true;
+    cin >> N;
 
-    for (int i = 0; i < n; i++)
+    while (N--)
     {
-        string test;
-        cin >> test;
-        int ss = 1;
+        string temp;
+        bool findChar = false;
         int sum = 0;
-        for (int j = 0; j < 17 && ss; j++)
-            if (test[j] >= '0' && test[j] <= '9')
-                sum += (test[j] - '0') * plus[j];
+        cin >> temp;
+
+        for (int i = 0; i < 17 && !findChar; ++i)
+            if (isdigit(temp[i]))
+                sum += (temp[i] - '0') * weighted[i];
             else
-                ss = 0;
+                findChar = true;
 
-        sum %= 11;
-
-        if (judge[sum] != test[17] || !ss)
+        if (checksum[sum % 11] != temp[17] || findChar)
         {
-            s = 0;
-            cout << test << endl;
+            cout << temp << endl;
+            judge = false;
         }
     }
 
-    if (s)
-        cout << "All passed" << endl;
+    if (judge)
+        cout << "All passed\n";
 
     system("pause");
     return 0;
