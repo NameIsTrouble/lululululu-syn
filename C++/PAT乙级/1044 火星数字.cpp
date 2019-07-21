@@ -2,6 +2,7 @@
 #include <math.h>
 #include <cstring>
 #include <map>
+#include <sstream>
 
 using namespace std;
 
@@ -44,7 +45,7 @@ int main()
 
     while (N--)
     {
-        
+        stringstream temp;
     }
 
     system("pause");
