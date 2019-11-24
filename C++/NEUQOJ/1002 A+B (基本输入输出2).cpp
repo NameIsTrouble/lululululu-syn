@@ -18,5 +18,6 @@ int main()
 	{
 		cout << sum[i] << endl;
 	}
+	
 	return 0;
 }
